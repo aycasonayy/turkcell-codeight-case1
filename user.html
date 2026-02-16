@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>User Detail</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="container">
+
+    <a href="index.html" class="back">← Back to Dashboard</a>
+
+    <h1 id="username"></h1>
+
+    <!-- TODAY -->
+    <h2>📊 Today Metrics</h2>
+    <div id="today"></div>
+
+    <!-- LAST 7 -->
+    <h2>📈 Last 7 Days</h2>
+    <div id="last7"></div>
+
+    <!-- STREAK -->
+    <h2>🔥 Streak</h2>
+    <div id="streak"></div>
+
+    <!-- QUEST RESULT -->
+    <h2>🎯 Quest Result</h2>
+    <div id="quests"></div>
+
+    <!-- LEDGER -->
+    <h2>💰 Points Ledger</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Points</th>
+                <th>Source</th>
+            </tr>
+        </thead>
+        <tbody id="ledger"></tbody>
+    </table>
+
+    <!-- BADGES -->
+    <h2>🏅 Badges</h2>
+    <div id="badges"></div>
+
+    <!-- NOTIFICATIONS -->
+    <h2>🔔 Notifications</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Message</th>
+            </tr>
+        </thead>
+        <tbody id="notifications"></tbody>
+    </table>
+
+</div>
+
+<script src="js/user.js"></script>
+
+</body>
+</html>
