@@ -1,5 +1,5 @@
--- Generated split from karısıkquery.sql
--- 02_views.sql
+
+-- views.sql
 
 CREATE OR REPLACE VIEW app.v_as_of_date AS
 SELECT MAX(date) AS as_of_date

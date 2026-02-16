@@ -1,5 +1,5 @@
--- Generated split from karısıkquery.sql
--- 03_data_ops_badges_notifications_ledger.sql
+
+-- data_ops_badges_notifications_ledger.sql
 
 -- 1) Ana ödül kayıtları
 INSERT INTO app.quest_awards (award_id, user_id, as_of_date, selected_quest, reward_points, created_at)

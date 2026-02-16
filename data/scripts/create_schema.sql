@@ -1,4 +1,4 @@
--- 0) İsteğe bağlı: her şeyi tek schema altında toplayalım
+-- 0)  her şey tek schema altında 
 CREATE SCHEMA IF NOT EXISTS app;
 SET search_path TO app;
 

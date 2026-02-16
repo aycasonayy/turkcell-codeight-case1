@@ -1,5 +1,5 @@
--- Generated split from karısıkquery.sql
--- 99_checks_and_tests.sql
+
+-- checks_and_tests.sql
 
 SELECT *
 FROM app.quest_award_items
