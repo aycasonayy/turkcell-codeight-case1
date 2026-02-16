@@ -1,0 +1,52 @@
+[
+    {
+      "user_id": "user_1",
+      "rank": 1,
+      "total_points": 1500,
+  
+      "today_metrics": {
+        "login_count_today": 1,
+        "play_minutes_today": 120,
+        "pvp_wins_today": 3,
+        "coop_minutes_today": 60,
+        "topup_try_today": 50
+      },
+  
+      "last_7d_metrics": {
+        "play_minutes_7d": 720,
+        "topup_try_7d": 200,
+        "logins_7d": 6
+      },
+  
+      "streak": 4,
+  
+      "quest_result": {
+        "triggered_quests": ["Daily Login", "Weekly Marathon"],
+        "selected_quest": "Weekly Marathon",
+        "reward_points": 150,
+        "suppressed_quests": ["Daily Login"],
+        "timestamp": "2026-02-16"
+      },
+  
+      "ledger": [
+        { "date": "2026-02-16", "points_delta": 150, "source": "QUEST_REWARD" },
+        { "date": "2026-02-15", "points_delta": 50, "source": "QUEST_REWARD" }
+      ],
+  
+      "badges": [
+        { "badge_name": "Bronze", "awarded_at": "2026-01-05" },
+        { "badge_name": "Silver", "awarded_at": "2026-02-01" },
+        { "badge_name": "Gold", "awarded_at": "2026-02-16" }
+      ],
+  
+      "notifications": [
+        {
+          "notification_id": "n1",
+          "channel": "BiP",
+          "message": "Tebrikler! Weekly Marathon görevini tamamladın (+150).",
+          "sent_at": "2026-02-16"
+        }
+      ]
+    }
+  ]
+  
