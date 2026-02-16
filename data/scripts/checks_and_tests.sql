@@ -1,4 +1,3 @@
-
 -- checks_and_tests.sql
 
 SELECT *
