@@ -1,33 +1,14 @@
-// MOCK DATA
-
-const USERS = [
-    {
-        user_id: "user_1",
-        points: 450,
-        login_today: 1,
-        play_minutes_7d: 720,
-        streak: 4
-    },
-    {
-        user_id: "user_2",
-        points: 320,
-        login_today: 1,
-        play_minutes_7d: 300,
-        streak: 2
-    },
-    {
-        user_id: "user_3",
-        points: 150,
-        login_today: 0,
-        play_minutes_7d: 100,
-        streak: 1
-    }
-];
-
-export async function getUsers() {
-    return USERS;
+export async function fetchUsers() {
+    const res = await fetch("/data/users.json");
+    return await res.json();
 }
 
-export async function getUserById(id) {
-    return USERS.find(u => u.user_id === id);
+export async function fetchLeaderboard() {
+    const res = await fetch("/data/leaderboard.json");
+    return await res.json();
+}
+
+export async function fetchUserById(userId) {
+    const users = await fetchUsers();
+    return users.find(u => u.user_id === userId);
 }

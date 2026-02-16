@@ -1,45 +1,29 @@
-import { getUsers } from "./api.js";
+export function renderLeaderboard(data) {
+    const tbody = document.querySelector("#leaderboardTable tbody");
+    tbody.innerHTML = "";
 
-async function renderLeaderboard() {
-    const container = document.getElementById("leaderboard");
-    if (!container) return;
-
-    const users = await getUsers();
-
-    const sorted = [...users].sort((a, b) => b.points - a.points);
-
-    container.innerHTML = "";
-
-    sorted.forEach((user, index) => {
-        container.innerHTML += `
-            <div class="card">
-                <strong>#${index + 1}</strong><br>
-                ${user.user_id}<br>
-                ${user.points} Points
-            </div>
+    data.slice(0, 10).forEach(row => {
+        tbody.innerHTML += `
+            <tr>
+                <td>${row.rank}</td>
+                <td>${row.user_id}</td>
+                <td>${row.total_points}</td>
+            </tr>
         `;
     });
 }
 
-async function renderUsers() {
-    const container = document.getElementById("users");
-    if (!container) return;
-
-    const users = await getUsers();
-    container.innerHTML = "";
+export function renderUsers(users) {
+    const tbody = document.querySelector("#usersTable tbody");
+    tbody.innerHTML = "";
 
     users.forEach(user => {
-        container.innerHTML += `
-            <div class="card" onclick="goToUser('${user.user_id}')" style="cursor:pointer;">
-                ${user.user_id}
-            </div>
+        tbody.innerHTML += `
+            <tr onclick="window.location.href='user.html?user_id=${user.user_id}'">
+                <td>${user.user_id}</td>
+                <td>${user.total_points || 0}</td>
+                <td>🔥 ${user.streak || 0}</td>
+            </tr>
         `;
     });
 }
-
-window.goToUser = function(userId) {
-    window.location.href = "user.html?user=" + userId;
-};
-
-renderLeaderboard();
-renderUsers();

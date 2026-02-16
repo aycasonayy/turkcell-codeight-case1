@@ -1,77 +1,27 @@
-import { getUserById } from "./api.js";
-
 function getUserIdFromUrl() {
     const params = new URLSearchParams(window.location.search);
-    return params.get("user");
+    return params.get("user_id");
 }
 
-function renderUser(user) {
-    const container = document.getElementById("user-detail");
-    if (!container) return;
-
-    container.innerHTML = `
-        <div class="card">
-            <strong>User:</strong> ${user.user_id}
-        </div>
-
-        <div class="card">
-            <strong>Login Today:</strong> ${user.login_today}<br>
-            <strong>Play Minutes (7d):</strong> ${user.play_minutes_7d}<br>
-            <strong>Streak:</strong> ${user.streak}
-        </div>
-
-        <div class="card">
-            <strong>Triggered Quests:</strong><br>
-            ${
-                user.triggered_quests && user.triggered_quests.length > 0
-                    ? user.triggered_quests.map(q => q.name).join("<br>")
-                    : "None"
-            }
-        </div>
-
-        <div class="card" style="border:2px solid #16a34a;">
-            <strong>Selected Quest:</strong><br>
-            ${
-                user.selected_quest
-                    ? `${user.selected_quest.name}<br><strong>Reward:</strong> ${user.selected_quest.reward} Points`
-                    : "None"
-            }
-        </div>
-
-        <div class="card">
-            <strong>Suppressed Quests:</strong><br>
-            ${
-                user.suppressed_quests && user.suppressed_quests.length > 0
-                    ? user.suppressed_quests.map(q => q.name).join("<br>")
-                    : "None"
-            }
-        </div>
-
-        <div class="card">
-            <strong>Badge:</strong> ${user.badge ? user.badge : "None"}
-        </div>
-
-        <div class="card">
-            <strong>Notifications:</strong><br>
-            ${
-                user.notifications && user.notifications.length > 0
-                    ? user.notifications.map(n => n.message).join("<br>")
-                    : "None"
-            }
-        </div>
-    `;
-}
-
-async function init() {
+async function loadUserDetail() {
     const userId = getUserIdFromUrl();
+
     if (!userId) return;
 
     try {
-        const user = await getUserById(userId);
-        renderUser(user);
+        const response = await fetch(`http://127.0.0.1:8000/api/users`);
+        const data = await response.json();
+
+        const user = data.find(u => u.user_id === userId);
+
+        if (!user) return;
+
+        document.getElementById("user-id").innerText = user.user_id;
+        document.getElementById("user-points").innerText = user.total_points;
+
     } catch (error) {
-        console.error("User load error:", error);
+        console.error("User detail error:", error);
     }
 }
 
-init();
+document.addEventListener("DOMContentLoaded", loadUserDetail);
